@@ -79,6 +79,24 @@ object MyModule {
     go(0)
   }
 
+  // 
+  def partiall[A,B,C](a: A, f: (A,B) => C): B => C =
+    (b: B) => f(a, b)
+  
+  // Exercise 2.3 - curry
+  def curry[A,B,C](f: (A, B) => C): A => (B => C) =
+    a => b => f(a,b)
+
+  // Exercise 2.4 - uncurry
+  def uncurry[A,B,C](f: A => B => C): (A,B) => C =
+    // f(A) = B => C
+    (a,b) => f(a)(b)
+
+  // Exercise 2.5 - compose
+  def compose[A,B,C](f: B => C, g: A => B): A => C = 
+    a => f(g(a))
+
+
   def main(args: Array[String]): Unit = {
     println(formatAbs(-40))
     println(formatFactorial(6))
@@ -88,5 +106,6 @@ object MyModule {
     println(formatResult("abs", -40, abs))
     println(formatResult("factorial", 6, factorial))
     println(formatResult("fibonacci", 7, fib))
+
   }
 }
