@@ -1,4 +1,4 @@
-package exercises
+package chap2
 
 object MyModule {
   def abs(n: Int): Int = {
